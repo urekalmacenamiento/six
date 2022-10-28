@@ -1,0 +1,652 @@
+DOCTYPE html><!-- doc a HTML5,  not closing tag -->
+
+<html lang="es-MX"> <!-- lector navegador, idioma y dialecto   "en-US" -->
+
+<head>
+
+<title>Urek</title><!-- titulo pestaña, displays the title for the page in search engine results-->
+
+<meta charset="UTF-8"><!-- Codificación -->
+<meta name="Music" content="Sell, Urek, music,"><!-- SEO meta, character set is used,--> <!--page description, keywords, author, and other metadata.   eta, character set is used, page description, keywords, author, and other metadata. Define keywords for search engines: -->
+<meta http-equiv="refresh" content=""><!-- refresca pagina -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link rel="stylesheet" href="es.css"><!-- CSS  <link rel="stylesheet" href="styles.css">   or   same folder as the current page  <link rel="stylesheet" href="/html/styles.css">  <link rel="stylesheet" href="https://www.w3schools.com/html/styles.css">-->
+
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> <!--temas-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> <!--jqueryminued-->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> <!--jqueryui-->
+
+</head>
+
+<style>
+	<!-- CSS en pagina -->
+	body{
+		font-family:  "Architects Daughter", "microsoft sans serif", sans-serif;
+		background-color:white;}
+
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: red; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #b30000; 
+}
+
+
+
+
+	
+	div.relative {
+  position: relative;
+	padding:0px;
+
+} 
+
+
+
+
+
+
+div.absolute {
+  position: absolute;
+  bottom: 35%;
+  left: 23%;
+  padding:0px;
+
+
+ /* border: 3px solid #73AD21;
+  border-radius:30px;
+  height:60px;*/
+}
+
+div.absolute2 {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+	padding:0px;
+  font-size: 18px;
+}
+
+
+div.absolute3 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+	padding:0px;
+  font-size: 18px;
+}
+
+div.absolute3:hover {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+	padding:0px;
+  font-size: 18px;
+  opacity: 0.5;
+	transition: 0.6s;
+}
+
+div.absolute3a {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+	padding:0px;
+  font-size: 18px;
+}
+
+div.absolute3a:hover {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+	padding:0px;
+  font-size: 18px;
+
+
+}
+
+@media (max-width: 600px) {
+	
+  div.absolute {
+  position: absolute;
+  bottom: 35%;
+  left: 15%;
+	
+}
+
+@media (max-width: 400px) {
+	
+  div.absolute {
+  position: absolute;
+  bottom: 35%;
+  left: 5%;
+	
+}
+
+</style>
+
+
+  <?php
+    include("conexion.php");
+      
+      $folio    ="";
+		$existefolio = 0;	//(324)puedo quitarlo "se le llama control de errores campovacioerroneoexistente"
+		
+	//CONSULTAR
+	$resultados = mysqli_query($con,"SELECT * FROM $estadisticas ORDER by id_cuentaconexion DESC LIMIT 1");	//para mostrar contenido que contenga "cion"$resultados = mysqli_query($con,"SELECT * FROM $propietario WHERE nombre LIKE '%al%'");	//(233)para mostrar la tabla de numero de masajes de una persona	$resultados = mysqli_query($con,"SELECT * FROM $propietario");
+	while($consulta = mysqli_fetch_array($resultados))
+	{	
+		$resultado = $consulta['id_cuentaconexion'] ;	
+		echo 							//(233)para mostrar la tabla de numero de masajes de una persona   echo $consulta['nombre']."<br>";	
+		
+	"<div  >
+	<fieldset>
+	<legend>Conexiones:</legend>
+
+	<label for=\"folio\">id_conexion index:</label><br>
+	<input name=\"folio\" type=\"number\" value=".$resultado." id=\"folio\" disabled><br>
+
+	</fieldset>
+<br>
+</div>";			
+		
+		$existefolio++;
+		
+	}
+	
+		if($existefolio==0){echo "No se pudo ingresar a la base de datos";}		//(324)puedo quitarlo			
+
+    include("descone.php");
+  ?>
+
+
+  <?php
+    include("conexion.php");
+      
+      $foliopre    ="";
+		$existefoliopre = 0;	//(324)puedo quitarlo "se le llama control de errores campovacioerroneoexistente"
+		
+	//CONSULTAR
+	$resultadospre = mysqli_query($con,"SELECT * FROM $estadisticaspre ORDER by id_cuentaconexionpre DESC LIMIT 1");	//para mostrar contenido que contenga "cion"$resultados = mysqli_query($con,"SELECT * FROM $propietario WHERE nombre LIKE '%al%'");	//(233)para mostrar la tabla de numero de masajes de una persona	$resultados = mysqli_query($con,"SELECT * FROM $propietario");
+	while($consultapre = mysqli_fetch_array($resultadospre))
+	{	
+		$resultadopre = $consultapre['id_cuentaconexionpre'] ;	
+		echo 							//(233)para mostrar la tabla de numero de masajes de una persona   echo $consulta['nombre']."<br>";	
+		
+	"<div  >
+	<fieldset>
+	<legend>Conexiones preindex:</legend>
+
+	<label for=\"folio\">id_conexion preindex:</label><br>
+	<input name=\"folio\" type=\"number\" value=".$resultadopre." id=\"folio\" disabled><br>
+
+	</fieldset>
+<br>
+</div>";			
+		
+		$existefoliopre++;
+		
+	}
+	
+		if($existefoliopre==0){echo "No se pudo ingresar a la base de datos";}		//(324)puedo quitarlo			
+
+    include("descone.php");
+  ?>
+  
+
+  <?php
+    include("conexion.php");
+      
+      $foliosub    ="";
+		$existefoliosub = 0;	//(324)puedo quitarlo "se le llama control de errores campovacioerroneoexistente"
+		
+	//CONSULTAR
+	$resultadossub = mysqli_query($con,"SELECT * FROM $estadisticassub ORDER by id_cuentaconexionsub DESC LIMIT 1");	//para mostrar contenido que contenga "cion"$resultados = mysqli_query($con,"SELECT * FROM $propietario WHERE nombre LIKE '%al%'");	//(233)para mostrar la tabla de numero de masajes de una persona	$resultados = mysqli_query($con,"SELECT * FROM $propietario");
+	while($consultasub = mysqli_fetch_array($resultadossub))
+	{	
+		$resultadosub = $consultasub['id_cuentaconexionsub'] ;	
+		echo 							//(233)para mostrar la tabla de numero de masajes de una persona   echo $consulta['nombre']."<br>";	
+		
+	"<div  >
+	<fieldset>
+	<legend>Conexiones index2:</legend>
+
+	<label for=\"folio\">id_conexion index2:</label><br>
+	<input name=\"folio\" type=\"number\" value=".$resultadosub." id=\"folio\" disabled><br>
+
+	</fieldset>
+<br>
+</div>";			
+		echo "% de conexiones preindex al total del index ";
+		echo "<br>% ";
+		echo $resultadopre * 100 / $resultado;
+		
+		echo "<br><br>";
+		echo "% de conexiones subindex al total del index ";
+		echo "<br>% ";
+		echo $resultadosub * 100 / $resultado;
+		$existefoliosub++;
+		
+	}
+	
+		if($existefoliosub==0){echo "No se pudo ingresar a la base de datos";}		//(324)puedo quitarlo			
+
+    include("descone.php");
+  ?>
+
+
+
+<body onclick="tiempoclic(event)" style="background-color:darkgrey">
+
+
+
+<p>emails suscritos</p>
+	<?php 
+			//seleccionar una columna y arrojar todos los datos
+
+			include("conexion.php");	//seleccionar todos los datos de la tabla usuario y ciclo para arrojar todos los nombres
+			$resultadousuario = mysqli_query($con,"SELECT * FROM $suscrito");
+			while($consultasu = mysqli_fetch_array($resultadousuario))
+			{
+				echo $consultasu['email']." ".$consultasu['fecha'];
+				echo "<br>";
+			}
+			include("descone.php");
+		
+	?>
+	
+<br>
+<span style="border:5px solid red;">Numero de emails suscritos
+	<?php 
+			//seleccionar una columna y arrojar todos los datos
+
+			include("conexion.php");	//seleccionar todos los datos de la tabla usuario y ciclo para arrojar todos los nombres
+			$resultadousuario = mysqli_query($con,"SELECT count(*) FROM $suscrito");
+			while($consultasu = mysqli_fetch_array($resultadousuario))
+			{
+				echo $consultasu['count(*)'];
+				echo "<br>";
+			}
+			include("descone.php");
+		
+	?>
+</span>
+
+<br>
+
+
+<span style="border:5px solid red;">Conexiones Lunes
+	<?php 
+			//seleccionar una columna y arrojar todos los datos
+
+			include("conexion.php");	//seleccionar todos los datos de la tabla usuario y ciclo para arrojar todos los nombres
+			$resultadousuario = mysqli_query($con,"SELECT count(*) FROM $estadisticas WHERE nomsem = 'Monday'");
+			while($consultasu = mysqli_fetch_array($resultadousuario))
+			{
+				echo $consultasu['count(*)'];
+				echo "<br>";
+			}
+			include("descone.php");
+		
+	?>
+</span>
+
+<span style="border:5px solid red;">Conexiones Martes
+	<?php 
+			//seleccionar una columna y arrojar todos los datos
+
+			include("conexion.php");	//seleccionar todos los datos de la tabla usuario y ciclo para arrojar todos los nombres
+			$resultadousuario = mysqli_query($con,"SELECT count(*) FROM $estadisticas WHERE nomsem = 'Tuesday'");
+			while($consultasu = mysqli_fetch_array($resultadousuario))
+			{
+				echo $consultasu['count(*)'];
+				echo "<br>";
+			}
+			include("descone.php");
+		
+	?>
+</span>
+
+<span style="border:5px solid red;">Conexiones Miércoles
+	<?php 
+			//seleccionar una columna y arrojar todos los datos
+
+			include("conexion.php");	//seleccionar todos los datos de la tabla usuario y ciclo para arrojar todos los nombres
+			$resultadousuario = mysqli_query($con,"SELECT count(*) FROM $estadisticas WHERE nomsem = 'Wednesday'");
+			while($consultasu = mysqli_fetch_array($resultadousuario))
+			{
+				echo $consultasu['count(*)'];
+				echo "<br>";
+			}
+			include("descone.php");
+		
+	?>
+</span>
+
+<span style="border:5px solid red;">Conexiones Jueves
+	<?php 
+			//seleccionar una columna y arrojar todos los datos
+
+			include("conexion.php");	//seleccionar todos los datos de la tabla usuario y ciclo para arrojar todos los nombres
+			$resultadousuario = mysqli_query($con,"SELECT count(*) FROM $estadisticas WHERE nomsem = 'Thursday'");
+			while($consultasu = mysqli_fetch_array($resultadousuario))
+			{
+				echo $consultasu['count(*)'];
+				echo "<br>";
+			}
+			include("descone.php");
+		
+	?>
+</span>
+
+<span style="border:5px solid red;">Conexiones Viernes
+	<?php 
+			//seleccionar una columna y arrojar todos los datos
+
+			include("conexion.php");	//seleccionar todos los datos de la tabla usuario y ciclo para arrojar todos los nombres
+			$resultadousuario = mysqli_query($con,"SELECT count(*) FROM $estadisticas WHERE nomsem = 'Friday'");
+			while($consultasu = mysqli_fetch_array($resultadousuario))
+			{
+				echo $consultasu['count(*)'];
+				echo "<br>";
+			}
+			include("descone.php");
+		
+	?>
+</span>
+
+<span style="border:5px solid red;">Conexiones Sábado
+	<?php 
+			//seleccionar una columna y arrojar todos los datos
+
+			include("conexion.php");	//seleccionar todos los datos de la tabla usuario y ciclo para arrojar todos los nombres
+			$resultadousuario = mysqli_query($con,"SELECT count(*) FROM $estadisticas WHERE nomsem = 'Saturday'");
+			while($consultasu = mysqli_fetch_array($resultadousuario))
+			{
+				echo $consultasu['count(*)'];
+				echo "<br>";
+			}
+			include("descone.php");
+		
+	?>
+</span>
+
+<span style="border:5px solid red;">Conexiones Domingo
+	<?php 
+			//seleccionar una columna y arrojar todos los datos
+
+			include("conexion.php");	//seleccionar todos los datos de la tabla usuario y ciclo para arrojar todos los nombres
+			$resultadousuario = mysqli_query($con,"SELECT count(*) FROM $estadisticas WHERE nomsem = 'Sunday'");
+			while($consultasu = mysqli_fetch_array($resultadousuario))
+			{
+				echo $consultasu['count(*)'];
+				echo "<br>";
+			}
+			include("descone.php");
+		
+	?>
+</span>
+
+<span style="border:5px solid red;">Conexiones Lunes
+	<?php 
+			//seleccionar una columna y arrojar todos los datos
+			$perro = "";
+			include("conexion.php");	//seleccionar todos los datos de la tabla usuario y ciclo para arrojar todos los nombres
+			$resultadousuario = mysqli_query($con,"SELECT count(*) FROM $estadisticas WHERE nomsem = 'Monday'");
+			while($consultasu = mysqli_fetch_array($resultadousuario))
+			{
+				$porlun = $consultasu['count(*)'];
+				echo $porlun;
+				echo "<br>";
+			}
+			include("descone.php");
+		
+	?>
+</span>
+
+<span style="border:5px solid red;">Conexiones Martes
+	<?php 
+			//seleccionar una columna y arrojar todos los datos
+
+			include("conexion.php");	//seleccionar todos los datos de la tabla usuario y ciclo para arrojar todos los nombres
+			$resultadousuario = mysqli_query($con,"SELECT count(*) FROM $estadisticas WHERE nomsem = 'Tuesday'");
+			while($consultasu = mysqli_fetch_array($resultadousuario))
+			{
+				$pormar = $consultasu['count(*)'];
+				echo $pormar;
+				echo "<br>";
+			}
+			include("descone.php");
+		
+	?>
+</span>
+
+<span style="border:5px solid red;">Conexiones Miércoles
+	<?php 
+			//seleccionar una columna y arrojar todos los datos
+
+			include("conexion.php");	//seleccionar todos los datos de la tabla usuario y ciclo para arrojar todos los nombres
+			$resultadousuario = mysqli_query($con,"SELECT count(*) FROM $estadisticas WHERE nomsem = 'Wednesday'");
+			while($consultasu = mysqli_fetch_array($resultadousuario))
+			{
+				$pormie = $consultasu['count(*)'];
+				echo $pormie;
+				echo "<br>";
+			}
+			include("descone.php");
+		
+	?>
+</span>
+
+<span style="border:5px solid red;">Conexiones Jueves
+	<?php 
+			//seleccionar una columna y arrojar todos los datos
+
+			include("conexion.php");	//seleccionar todos los datos de la tabla usuario y ciclo para arrojar todos los nombres
+			$resultadousuario = mysqli_query($con,"SELECT count(*) FROM $estadisticas WHERE nomsem = 'Thursday'");
+			while($consultasu = mysqli_fetch_array($resultadousuario))
+			{
+				$porjue = $consultasu['count(*)'];
+				echo $porjue;
+				echo "<br>";
+			}
+			include("descone.php");
+		
+	?>
+</span>
+
+<span style="border:5px solid red;">Conexiones Viernes
+	<?php 
+			//seleccionar una columna y arrojar todos los datos
+
+			include("conexion.php");	//seleccionar todos los datos de la tabla usuario y ciclo para arrojar todos los nombres
+			$resultadousuario = mysqli_query($con,"SELECT count(*) FROM $estadisticas WHERE nomsem = 'Friday'");
+			while($consultasu = mysqli_fetch_array($resultadousuario))
+			{
+				$porvie = $consultasu['count(*)'];
+				echo $porvie;
+				echo "<br>";
+			}
+			include("descone.php");
+		
+	?>
+</span>
+
+<span style="border:5px solid red;">Conexiones Sábado
+	<?php 
+			//seleccionar una columna y arrojar todos los datos
+
+			include("conexion.php");	//seleccionar todos los datos de la tabla usuario y ciclo para arrojar todos los nombres
+			$resultadousuario = mysqli_query($con,"SELECT count(*) FROM $estadisticas WHERE nomsem = 'Saturday'");
+			while($consultasu = mysqli_fetch_array($resultadousuario))
+			{
+				$porsab = $consultasu['count(*)'];
+				echo $porsab;
+				echo "<br>";
+			}
+			include("descone.php");
+		
+	?>
+</span>
+
+<span style="border:5px solid red;">Conexiones Domingo
+	<?php 
+			//seleccionar una columna y arrojar todos los datos
+
+			include("conexion.php");	//seleccionar todos los datos de la tabla usuario y ciclo para arrojar todos los nombres
+			$resultadousuario = mysqli_query($con,"SELECT count(*) FROM $estadisticas WHERE nomsem = 'Sunday'");
+			while($consultasu = mysqli_fetch_array($resultadousuario))
+			{
+				$pordom = $consultasu['count(*)'];
+				echo $pordom;
+				echo "<br>";
+			}
+
+		echo "<br><br>";
+		echo "% de conexiones de lunes al total del index ";
+		echo "<br>% ";
+		echo $porlun * 100 / $resultado;
+
+		echo "<br><br>";
+		echo "% de conexiones de martes al total del index ";
+		echo "<br>% ";
+		echo $pormar * 100 / $resultado;
+
+		echo "<br><br>";
+		echo "% de conexiones de miércoles al total del index ";
+		echo "<br>% ";
+		echo $pormie * 100 / $resultado;
+
+		echo "<br><br>";
+		echo "% de conexiones de jueves al total del index ";
+		echo "<br>% ";
+		echo $porjue * 100 / $resultado;
+
+		echo "<br><br>";
+		echo "% de conexiones de viernes al total del index ";
+		echo "<br>% ";
+		echo $porvie * 100 / $resultado;			
+
+		echo "<br><br>";
+		echo "% de conexiones de sábado al total del index ";
+		echo "<br>% ";
+		echo $porsab * 100 / $resultado;
+
+		echo "<br><br>";			
+		echo "% de conexiones de domingo al total del index ";
+		echo "<br>% ";
+		echo $pordom * 100 / $resultado;
+		
+
+
+		
+			include("descone.php");
+		
+
+		
+		
+	?>
+</span>
+
+
+<div class="montadoflex">
+<div class="flex1">
+  <div class="flexitem1" style="padding:50px;">
+  
+  	   <span class="iconos1" >
+		<a class="icono1" title="Abrir en Facebook" href="https://www.facebook.com/urekmusic"></a>
+		<a class="icono2" title="Chat Whatsapp" href="https://wa.me/5213313036681?text=Hello,%20:)"></a>
+<!--	<a class="icono3" title="Chat Messenger" href="https://m.me/ur"></a>
+		<a class="icono4" title="Instagram" href="#"></a>
+		<a class="icono5" title="Twitter" href="#"></a>
+		<a class="icono6" title="Youtube" href="#"></a>-->
+	   </span>	  
+
+  </div>
+  
+  <div class="flexitem2"style="padding:50px;">
+	<a title="Book!" class="three" href="https://wa.me/5213313036681?text=Hello,%20I%20want%20to%20book" style="text-decoration:none;">Bookings</a>
+  </div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="js.js"> </script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+<script>
+const datee = new Date();
+document.getElementById("feccom").innerHTML = datee;
+</script>
+
+<script>
+const d = new Date();
+let day = d.getDate()
+document.getElementById("diames").innerHTML = day;
+</script>
+
+<script>
+const monthd = new Date();
+let month = monthd.getMonth()
+document.getElementById("mesfec").innerHTML = month+=1;
+</script>
+
+<script>
+const horaa = new Date();
+let hour = horaa.getHours()
+document.getElementById("horact").innerHTML = hour;
+</script>
+
+
+<script>
+
+/*
+	let url = 'https://jsonplaceholder.typicode.com/albums' //definimos una variable a donde hace referencia los datos
+	fetch(url) //solicitud a la url
+	.then(response => response.json())    //formato correspondiente a json
+	.then(data => console.log(data))      //leemos este objeto data y lo mostramos por consola
+	.catch(error => console.log(error))   //si hay un error lo atrapamos con la palabra reservada catch
+
+
+
+*/
+			//o  mostrar datos en sitio
+
+	
+</script>
+
+  
+</body>
+
+</html>
